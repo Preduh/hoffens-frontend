@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Homepage</title>
+        <title>Hoffens</title>
       </Head>
       <Section>
         <Header>

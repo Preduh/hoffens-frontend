@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
       </Head>
       <Component {...pageProps} />
       <GlobalStyle />
