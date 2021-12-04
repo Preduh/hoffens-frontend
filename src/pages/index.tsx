@@ -1,5 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useState } from "react";
+import SignModal from "../components/signModal";
 
 import {
   Section,
@@ -11,11 +13,18 @@ import {
 } from "../styles/pages/Home";
 
 const Home: NextPage = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const showLoginForm = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <>
       <Head>
         <title>Hoffens</title>
       </Head>
+      <SignModal showModal={showModal} setShowModal={setShowModal} />
       <Section>
         <Header>
           <a href="#">
@@ -27,8 +36,12 @@ const Home: NextPage = () => {
               <a href="#players">Players</a>
             </div>
             <div>
-              <a href="#">Login</a>
-              <a href="#">Register</a>
+              <button type="button" onClick={showLoginForm}>
+                Login
+              </button>
+              <button type="button" onClick={showLoginForm}>
+                Register
+              </button>
             </div>
           </Menu>
         </Header>

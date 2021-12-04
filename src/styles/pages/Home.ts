@@ -47,6 +47,17 @@ export const Menu = styled.menu`
       text-decoration: none;
       color: ${props => props.theme.colors.text};
     }
+
+    button {
+      background-color: transparent;
+      color: ${props => props.theme.colors.text};
+      border: none;
+      outline: none;
+      font-size: 22px;
+      font-weight: 500;
+      margin-left: 24px;
+      cursor: pointer;
+    }
   }
 `;
 
