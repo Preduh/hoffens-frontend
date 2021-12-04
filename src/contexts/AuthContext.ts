@@ -7,7 +7,7 @@ interface SignInData {
 
 const signIn = async ({ email, password }: SignInData) => {
   try {
-    const { data } = await api.post("session", { email, password });
+    const { data } = await api.post("api/session", { email, password });
 
     if (data) {
       console.log(data);
