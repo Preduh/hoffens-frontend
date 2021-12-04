@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import dbConnect from "../../../config/mongodb";
-import CreatePlayerService from "../../../services/CreatePlayerService";
+import dbConnect from "../../config/mongodb";
+import CreatePlayerService from "../../services/CreatePlayerService";
 
 export default async function handler(
   request: NextApiRequest,

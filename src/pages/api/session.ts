@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import dbConnect from "../../../config/mongodb";
-import CreateSessionService from "../../../services/CreateSessionService";
+import dbConnect from "../../config/mongodb";
+import CreateSessionService from "../../services/CreateSessionService";
 
 export default async function handler(
   request: NextApiRequest,
