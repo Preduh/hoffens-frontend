@@ -9,7 +9,9 @@ const signIn = async ({ email, password }: SignInData) => {
   try {
     const { data } = await api.post("session", { email, password });
 
-    console.log(data);
+    if (data) {
+      console.log(data);
+    }
   } catch (err) {
     console.log(err.response.data);
   }
