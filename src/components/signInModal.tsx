@@ -1,33 +1,35 @@
 import { useForm } from "react-hook-form";
 
-import { Background, Form } from "../styles/components/Modal";
-import { signIn } from "../contexts/AuthContext";
+import { Background, Form } from "../styles/components/SignInModal";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
 
 interface SignInData {
   email: string;
   password: string;
 }
 
-const SignModal = ({ showModal, setShowModal }) => {
+const SignModal = ({ showLoginModal, setShowLoginModal }) => {
   const { register, handleSubmit } = useForm();
+  const { signIn } = useContext(AuthContext);
 
   const handleSignIn = ({ email, password }: SignInData) => {
     signIn({ email, password });
   };
 
   const closeModal = () => {
-    setShowModal(!showModal);
+    setShowLoginModal(!showLoginModal);
   };
 
   return (
     <>
-      {showModal ? (
+      {showLoginModal ? (
         <div>
           <Background onClick={closeModal} />
           <Form onSubmit={handleSubmit(handleSignIn)}>
             <div className="wrapper">
               <div className="title">
-                <h1>BACK TO WORK</h1>
+                <h1>DE VOLTA AO TRABALHO</h1>
                 <img src="/assets/logoPreto.png" alt="Logo Hoffens" />
               </div>
               <div>
@@ -43,7 +45,7 @@ const SignModal = ({ showModal, setShowModal }) => {
                   type="password"
                   placeholder="Password"
                 />
-                <button type="submit">Login</button>
+                <button type="submit">ENTRAR</button>
               </div>
             </div>
           </Form>

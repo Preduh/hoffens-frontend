@@ -43,7 +43,7 @@ export const Menu = styled.menu`
     flex-direction: row;
 
     a {
-      margin-left: 24px;
+      margin-left: 22px;
       text-decoration: none;
       color: ${props => props.theme.colors.text};
     }
@@ -53,9 +53,9 @@ export const Menu = styled.menu`
       color: ${props => props.theme.colors.text};
       border: none;
       outline: none;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 500;
-      margin-left: 24px;
+      margin-left: 32px;
       cursor: pointer;
     }
   }

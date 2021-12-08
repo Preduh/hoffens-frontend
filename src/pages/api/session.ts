@@ -22,9 +22,11 @@ export default async function handler(
           password,
         });
 
-        const { _id, username } = player;
+        const { _id, username, avatarUrl } = player;
 
-        return response.status(200).json({ _id, username, email, token });
+        return response
+          .status(200)
+          .json({ _id, username, email, avatarUrl, token });
       } catch (err) {
         response.status(400).json({ error: err.message });
       }

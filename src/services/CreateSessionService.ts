@@ -16,6 +16,7 @@ interface ResponseDTO {
     username: string;
     email: string;
     password: string;
+    avatarUrl: string;
     _id: ObjectId;
     __v: number;
   };
@@ -40,6 +41,7 @@ export default class CreateSessionService {
     const { secret, expiresIn } = authConfig.jwt;
 
     const token = sign({}, secret, {
+      subject: player._id.toString(),
       expiresIn,
     });
 

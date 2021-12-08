@@ -13,17 +13,22 @@ export default async function handler(
   switch (method) {
     case "POST":
       try {
-        const { username, email, password } = request.body;
+        const { username, email, password, avatarUrl, masterKey } =
+          request.body;
 
         const createPlayerService = new CreatePlayerService();
 
-        const { _id } = await createPlayerService.execute({
+        const { player, token } = await createPlayerService.execute({
           username,
           email,
           password,
+          avatarUrl,
+          masterKey,
         });
 
-        response.status(201).json({ _id, username, email });
+        response
+          .status(201)
+          .json({ _id: player._id, username, email, avatarUrl, token });
       } catch (err) {
         response.status(400).json({ error: err.message });
       }

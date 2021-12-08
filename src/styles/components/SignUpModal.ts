@@ -13,11 +13,11 @@ export const Background = styled.div`
 
 export const Form = styled.form`
   background-color: white;
-  height: 550px;
+  height: 625px;
   width: 500px;
   border-radius: 12px;
   position: fixed;
-  top: 64px;
+  top: 16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -31,7 +31,7 @@ export const Form = styled.form`
     height: 100%;
     width: 100%;
     border: 2px solid ${props => props.theme.colors.primary};
-    padding: 16px 48px;
+    padding: 0px 48px;
     border-radius: 12px;
 
     .title {
@@ -43,12 +43,12 @@ export const Form = styled.form`
         color: ${props => props.theme.colors.primary};
         text-align: center;
         font-weight: 900;
-        font-size: 50px;
+        font-size: 39px;
       }
 
       img {
-        width: 128px;
-        height: 128px;
+        width: 108px;
+        height: 108px;
       }
     }
 

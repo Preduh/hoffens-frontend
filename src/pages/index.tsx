@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import SignModal from "../components/signModal";
+import SignInModal from "../components/signInModal";
+import SignUpModal from "../components/signUpModal";
 
 import {
   Section,
@@ -13,10 +14,15 @@ import {
 } from "../styles/pages/Home";
 
 const Home: NextPage = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
 
   const showLoginForm = () => {
-    setShowModal(!showModal);
+    setShowLoginModal(!showLoginModal);
+  };
+
+  const showRegisterForm = () => {
+    setShowRegisterModal(!showRegisterModal);
   };
 
   return (
@@ -24,7 +30,14 @@ const Home: NextPage = () => {
       <Head>
         <title>Hoffens</title>
       </Head>
-      <SignModal showModal={showModal} setShowModal={setShowModal} />
+      <SignInModal
+        showLoginModal={showLoginModal}
+        setShowLoginModal={setShowLoginModal}
+      />
+      <SignUpModal
+        showRegisterModal={showRegisterModal}
+        setShowRegisterModal={setShowRegisterModal}
+      />
       <Section>
         <Header>
           <a href="#">
@@ -32,21 +45,21 @@ const Home: NextPage = () => {
           </a>
           <Menu>
             <div>
-              <a href="#history">History</a>
-              <a href="#players">Players</a>
+              <a href="#history">História</a>
+              <a href="#players">Jogadores</a>
             </div>
             <div>
               <button type="button" onClick={showLoginForm}>
-                Login
+                Entrar
               </button>
-              <button type="button" onClick={showLoginForm}>
-                Register
+              <button type="button" onClick={showRegisterForm}>
+                Trabalhe Conosco
               </button>
             </div>
           </Menu>
         </Header>
         <Main>
-          <h1>WELCOME TO HOFFENS</h1>
+          <h1>BEM-VINDO AO HOFFENS</h1>
         </Main>
       </Section>
       <History id="history">
@@ -67,27 +80,27 @@ const Home: NextPage = () => {
       <Players id="players">
         <div className="player">
           <div className="avatar" />
-          <label>Player</label>
+          <label>Jogador</label>
         </div>
         <div className="player">
           <div className="avatar" />
-          <label>Player</label>
+          <label>Jogador</label>
         </div>
         <div className="player">
           <div className="avatar" />
-          <label>Player</label>
+          <label>Jogador</label>
         </div>
         <div className="player">
           <div className="avatar" />
-          <label>Player</label>
+          <label>Jogador</label>
         </div>
         <div className="player">
           <div className="avatar" />
-          <label>Player</label>
+          <label>Jogador</label>
         </div>
         <div className="player">
           <div className="avatar" />
-          <label>Player</label>
+          <label>Jogador</label>
         </div>
       </Players>
     </>

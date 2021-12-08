@@ -15,6 +15,9 @@ const PlayersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  avatarUrl: {
+    type: String,
+  },
 });
 
 export default mongoose.models.Players ||
