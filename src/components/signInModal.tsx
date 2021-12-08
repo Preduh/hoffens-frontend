@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
 
 import { Background, Form } from "../styles/components/SignInModal";
 import { AuthContext } from "../contexts/AuthContext";
-import { useContext } from "react";
 
 interface SignInData {
   email: string;
@@ -11,7 +11,7 @@ interface SignInData {
 
 const SignModal = ({ showLoginModal, setShowLoginModal }) => {
   const { register, handleSubmit } = useForm();
-  const { signIn } = useContext(AuthContext);
+  const { signIn, errorSignIn } = useContext(AuthContext);
 
   const handleSignIn = ({ email, password }: SignInData) => {
     signIn({ email, password });
@@ -46,6 +46,12 @@ const SignModal = ({ showLoginModal, setShowLoginModal }) => {
                   placeholder="Password"
                 />
                 <button type="submit">ENTRAR</button>
+                {errorSignIn && (
+                  <div className="error">
+                    <img src="/assets/alerta.png" alt="Alert icon" />
+                    <p>{errorSignIn}</p>
+                  </div>
+                )}
               </div>
             </div>
           </Form>

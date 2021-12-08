@@ -14,7 +14,7 @@ interface SignUpData {
 
 const SignUpModal = ({ showRegisterModal, setShowRegisterModal }) => {
   const { register, handleSubmit } = useForm();
-  const { signUp } = useContext(AuthContext);
+  const { signUp, errorSignUp } = useContext(AuthContext);
 
   const handleSignIn = ({
     username,
@@ -72,6 +72,12 @@ const SignUpModal = ({ showRegisterModal, setShowRegisterModal }) => {
                   style={{ width: "100%" }}
                 />
                 <button type="submit">CADASTRAR</button>
+                {errorSignUp && (
+                  <div className="error">
+                    <img src="/assets/alerta.png" alt="Alert icon" />
+                    <p>{errorSignUp}</p>
+                  </div>
+                )}
               </div>
             </div>
           </Form>

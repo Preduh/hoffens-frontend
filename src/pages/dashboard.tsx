@@ -14,11 +14,14 @@ const Dashboard: NextPage = () => {
       </Head>
       <Header>
         <h1>Dashboard</h1>
-        {user?.avatarUrl ? (
-          <img src={user.avatarUrl} />
-        ) : (
-          <img src="https://cdn.discordapp.com/attachments/793823363725656077/917877725425975346/69pS2JKrBFAAAAABJRU5ErkJggg.png" />
-        )}
+        <img
+          src={user?.avatarUrl}
+          onError={(e: any) => {
+            e.target.onerror = null;
+            e.target.src =
+              "https://cdn.discordapp.com/attachments/793823363725656077/917877725425975346/69pS2JKrBFAAAAABJRU5ErkJggg.png";
+          }}
+        />
       </Header>
     </Container>
   );

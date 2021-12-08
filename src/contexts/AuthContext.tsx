@@ -30,6 +30,8 @@ interface AuthContextData {
   user: UserData;
   signIn: (data: SignInData) => Promise<void>;
   signUp: (data: SignUpData) => Promise<void>;
+  errorSignIn: {};
+  errorSignUp: {};
 }
 
 export const AuthContext = createContext({} as AuthContextData);
@@ -37,6 +39,8 @@ export const AuthContext = createContext({} as AuthContextData);
 export function AuthProvider({ children }) {
   const [user, setUser] = useState<UserData | null>(null);
   const isAuthenticated = !!user;
+  const [errorSignIn, setErrorSignIn] = useState<{} | null>(null);
+  const [errorSignUp, setErrorSignUp] = useState<{} | null>(null);
 
   useEffect(() => {
     const { "hoffens.token": token } = parseCookies();
@@ -66,10 +70,11 @@ export function AuthProvider({ children }) {
 
         api.defaults.headers["authorization"] = `Bearer ${data.token}`;
 
+        setErrorSignIn(null);
         Router.push("/dashboard");
       }
     } catch (err) {
-      console.log(err.response.data);
+      setErrorSignIn(err.response.data.error);
     }
   };
 
@@ -98,15 +103,25 @@ export function AuthProvider({ children }) {
 
         api.defaults.headers["authorization"] = `Bearer ${data.token}`;
 
+        setErrorSignUp(null);
         Router.push("/dashboard");
       }
     } catch (err) {
-      console.log(err.response.data);
+      setErrorSignUp(err.response.data.error);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, signIn, signUp, isAuthenticated }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        signIn,
+        signUp,
+        isAuthenticated,
+        errorSignIn,
+        errorSignUp,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

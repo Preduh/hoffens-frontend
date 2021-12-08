@@ -96,6 +96,24 @@ export const Form = styled.form`
           transform: scale(0.97);
         }
       }
+
+      .error {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px;
+        border-radius: 4px;
+        border: 1px solid ${props => props.theme.colors.primary};
+
+        img {
+          width: 24px;
+          margin-right: 16px;
+        }
+
+        p {
+          color: ${props => props.theme.colors.primary};
+        }
+      }
     }
   }
 `;

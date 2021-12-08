@@ -36,10 +36,6 @@ export default class CreatePlayerService {
   }: RequestDTO): Promise<ResponseDTO> {
     await dbConnect();
 
-    if (masterKey !== "hoffens5") {
-      throw Error("Invalid master key.");
-    }
-
     const emailExists = await Player.findOne({ email });
 
     if (emailExists) {
@@ -47,6 +43,10 @@ export default class CreatePlayerService {
     }
 
     const hashedPassword = await hash(password, 8);
+
+    if (masterKey !== "hoffens5") {
+      throw Error("Invalid master key.");
+    }
 
     const player = await Player.create({
       username,
