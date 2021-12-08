@@ -9,6 +9,7 @@ interface SignUpData {
   email: string;
   password: string;
   masterKey: string;
+  avatarUrl: string;
 }
 
 const SignUpModal = ({ showRegisterModal, setShowRegisterModal }) => {
@@ -20,8 +21,9 @@ const SignUpModal = ({ showRegisterModal, setShowRegisterModal }) => {
     email,
     password,
     masterKey,
+    avatarUrl,
   }: SignUpData) => {
-    signUp({ username, email, password, masterKey });
+    signUp({ username, email, password, masterKey, avatarUrl });
   };
 
   const closeModal = () => {
@@ -62,6 +64,12 @@ const SignUpModal = ({ showRegisterModal, setShowRegisterModal }) => {
                   {...register("masterKey")}
                   type="password"
                   placeholder="Master key"
+                />
+                <input
+                  {...register("avatarUrl")}
+                  type="text"
+                  placeholder="Avatar URL - Opcional"
+                  style={{ width: "100%" }}
                 />
                 <button type="submit">CADASTRAR</button>
               </div>

@@ -14,6 +14,7 @@ interface SignUpData {
   email: string;
   password: string;
   masterKey: string;
+  avatarUrl: string;
 }
 
 interface UserData {
@@ -77,6 +78,7 @@ export function AuthProvider({ children }) {
     password,
     username,
     masterKey,
+    avatarUrl,
   }: SignUpData) => {
     try {
       const { data } = await api.post("api/player", {
@@ -84,6 +86,7 @@ export function AuthProvider({ children }) {
         password,
         username,
         masterKey,
+        avatarUrl,
       });
 
       if (data) {

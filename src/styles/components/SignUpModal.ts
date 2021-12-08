@@ -13,8 +13,8 @@ export const Background = styled.div`
 
 export const Form = styled.form`
   background-color: white;
-  height: 625px;
-  width: 500px;
+  height: 600px;
+  width: 700px;
   border-radius: 12px;
   position: fixed;
   top: 16px;
@@ -22,7 +22,7 @@ export const Form = styled.form`
   transform: translateX(-50%);
   z-index: 2;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 24px;
   justify-content: space-between;
   align-items: center;
@@ -38,6 +38,7 @@ export const Form = styled.form`
       display: flex;
       flex-direction: row;
       align-items: center;
+      flex-wrap: nowrap;
 
       h1 {
         color: ${props => props.theme.colors.primary};
@@ -54,13 +55,14 @@ export const Form = styled.form`
 
     div {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
+      flex-wrap: wrap;
       margin-top: 32px;
       width: 100%;
 
       input {
-        width: 100%;
+        width: 49%;
         height: 48px;
         border: 1px solid #979797;
         border-radius: 4px;
@@ -85,6 +87,7 @@ export const Form = styled.form`
         font-size: 28px;
         font-weight: 700;
         border: none;
+        width: 100%;
         height: 48px;
         border-radius: 4px;
         cursor: pointer;
