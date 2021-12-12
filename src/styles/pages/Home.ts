@@ -95,6 +95,13 @@ export const History = styled.div`
     width: 800px;
     font-size: 26px;
   }
+
+  @media (max-width: 800px) {
+    img {
+      width: 300px;
+      height: 281px;
+    }
+  }
 `;
 
 export const Players = styled.div`
