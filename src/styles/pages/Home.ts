@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Section = styled.section`
   background: url("./assets/merlinDeath-min.png");
   background-repeat: no-repeat;
-  background-size: 1366px;
+  background-size: auto 100%;
   width: 100%;
   height: 100vh;
 
