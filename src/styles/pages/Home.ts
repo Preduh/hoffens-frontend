@@ -31,10 +31,16 @@ export const Main = styled.main`
   align-items: center;
   justify-content: center;
   height: 100%;
-  font-size: 64px;
 
   h1 {
     text-align: center;
+    font-size: 82px;
+  }
+
+  @media (max-width: 1000px) {
+    h1 {
+      font-size: 64px;
+    }
   }
 `;
 
