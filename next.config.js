@@ -4,7 +4,7 @@ module.exports = {
   reactStrictMode: true,
   styledComponents: true,
   i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
+    locales: ["pt-br"],
+    defaultLocale: "pt-br",
   },
 };
