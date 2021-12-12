@@ -2,5 +2,9 @@
 
 module.exports = {
   reactStrictMode: true,
-  styledComponents: true
-}
+  styledComponents: true,
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
+};

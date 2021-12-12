@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-  background: url("./assets/merlinDeath.png");
-  background-repeat: no-no-repeat;
-  background-size: 100vw;
+  background: url("./assets/merlinDeath-min.png");
+  background-repeat: no-repeat;
+  background-size: 1366px;
   width: 100%;
   height: 100vh;
 `;
@@ -16,9 +16,13 @@ export const Header = styled.header`
   padding: 0px 64px;
   position: fixed;
   width: 100%;
+  z-index: 2;
 
-  img {
-    height: 80px;
+  a {
+    img {
+      height: 80px;
+      width: 80px;
+    }
   }
 `;
 
@@ -28,6 +32,10 @@ export const Main = styled.main`
   justify-content: center;
   height: 100%;
   font-size: 64px;
+
+  h1 {
+    text-align: center;
+  }
 `;
 
 export const Menu = styled.menu`
@@ -68,15 +76,23 @@ export const History = styled.div`
   display: flex;
   align-items: center;
   padding: 0px 32px;
-  justify-content: space-between;
+  justify-content: center;
+  position: relative;
 
   img {
+    position: absolute;
     width: 500px;
+    height: 481px;
+    opacity: 30%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
   }
 
   p {
+    z-index: 1;
     color: ${props => props.theme.colors.primary};
-    width: 700px;
+    width: 800px;
     font-size: 26px;
   }
 `;
@@ -84,7 +100,7 @@ export const History = styled.div`
 export const Players = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: url("./assets/backgroundPlayers.png");
+  background: url("./assets/backgroundPlayers-min.png");
   background-repeat: no-repeat;
   display: flex;
   flex-direction: row;

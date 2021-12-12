@@ -22,6 +22,11 @@ function MyApp({ Component, pageProps }: AppProps) {
             rel="stylesheet"
           />
           <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+          <meta httpEquiv="Content-Language" content="pt-br"></meta>
+          <meta
+            name="description"
+            content="RPG Hoffens jogado no Vongola."
+          ></meta>
         </Head>
         <Component {...pageProps} />
         <GlobalStyle />

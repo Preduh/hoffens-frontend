@@ -38,10 +38,10 @@ const Home: NextPage = () => {
         showRegisterModal={showRegisterModal}
         setShowRegisterModal={setShowRegisterModal}
       />
-      <Section>
+      <Section id="apresentation">
         <Header>
-          <a href="#">
-            <img src="./assets/logo.png" />
+          <a href="#apresentation">
+            <img src="./assets/logo.png" alt="Hoffens logo" />
           </a>
           <Menu>
             <div>
@@ -63,7 +63,7 @@ const Home: NextPage = () => {
         </Main>
       </Section>
       <History id="history">
-        <img src="./assets/history.png" />
+        <img src="./assets/history.png" alt="Hoffens Logo" />
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
           elementum neque a justo vehicula dictum. Morbi ut augue nunc. Donec
