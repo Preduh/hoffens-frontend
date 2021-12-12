@@ -103,9 +103,19 @@ export const History = styled.div`
   }
 
   @media (max-width: 800px) {
+    padding-top: 48px;
+
     img {
       width: 300px;
       height: 281px;
+    }
+
+    p {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      font-size: 18px;
     }
   }
 `;
