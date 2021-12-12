@@ -7,7 +7,7 @@ export const Section = styled.section`
   width: 100%;
   height: 100vh;
 
-  @media (max-width: 800px) {
+  @media screen and (max-width: 800px) {
     background-size: auto 100%;
     background-position-x: -100px;
   }
@@ -30,9 +30,9 @@ export const Header = styled.header`
     }
   }
 
-  @media (max-width: 800px) {
+  /*@media (max-width: 800px) {
     padding: 0 16px;
-  }
+  }*/
 `;
 
 export const Menu = styled.menu`
@@ -77,11 +77,11 @@ export const Main = styled.main`
     font-size: 82px;
   }
 
-  @media (max-width: 800px) {
+  /*@media (max-width: 800px) {
     h1 {
       font-size: 58px;
     }
-  }
+  }*/
 `;
 
 export const History = styled.div`
@@ -111,7 +111,7 @@ export const History = styled.div`
     font-size: 26px;
   }
 
-  @media (max-width: 800px) {
+  /*@media (max-width: 800px) {
     img {
       width: 300px;
       height: 281px;
@@ -122,7 +122,7 @@ export const History = styled.div`
       margin-top: 64px;
       font-size: 20px;
     }
-  }
+  }*/
 `;
 
 export const Players = styled.div`
