@@ -24,6 +24,10 @@ export const Header = styled.header`
       width: 80px;
     }
   }
+
+  @media (max-width: 800px) {
+    padding: 0px 16px;
+  }
 `;
 
 export const Main = styled.main`
