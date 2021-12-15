@@ -121,10 +121,10 @@ export const Form = styled.form`
 
   @media (max-width: 800px) {
     width: 100%;
-    height: 100%;
     top: 0px;
     padding: 8px;
     border-radius: 0px;
+    height: 100%;
 
     .wrapper {
       padding: 0px 16px;
@@ -168,6 +168,22 @@ export const Form = styled.form`
         h1 {
           font-size: 28px;
         }
+      }
+    }
+  }
+
+  @media (max-height: 500px) {
+    .wrapper {
+      .title {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-height: 360px) {
+    .wrapper {
+      #closeButton {
+        top: 12px;
       }
     }
   }
