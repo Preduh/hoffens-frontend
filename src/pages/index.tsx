@@ -104,27 +104,27 @@ const Home: NextPage = () => {
       <Players id="players">
         <div className="player">
           <div className="avatar" />
-          <label>Jogador</label>
+          <label>Jogador1</label>
         </div>
         <div className="player">
           <div className="avatar" />
-          <label>Jogador</label>
+          <label>Jogador2</label>
         </div>
         <div className="player">
           <div className="avatar" />
-          <label>Jogador</label>
+          <label>Jogador3</label>
         </div>
         <div className="player">
           <div className="avatar" />
-          <label>Jogador</label>
+          <label>Jogador4</label>
         </div>
         <div className="player">
           <div className="avatar" />
-          <label>Jogador</label>
+          <label>Jogador5</label>
         </div>
         <div className="player">
           <div className="avatar" />
-          <label>Jogador</label>
+          <label>Jogador6</label>
         </div>
       </Players>
     </>
