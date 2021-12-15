@@ -28,6 +28,9 @@ const SignModal = ({ showLoginModal, setShowLoginModal }) => {
           <Background onClick={closeModal} />
           <Form onSubmit={handleSubmit(handleSignIn)}>
             <div className="wrapper">
+              <p onClick={closeModal} id="closeButton">
+                X
+              </p>
               <div className="title">
                 <h1>DE VOLTA AO TRABALHO</h1>
                 <img src="/assets/logoPreto.png" alt="Logo Hoffens" />

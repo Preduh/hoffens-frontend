@@ -8,7 +8,7 @@ export const Background = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 3;
 `;
 
 export const Form = styled.form`
@@ -20,7 +20,7 @@ export const Form = styled.form`
   top: 64px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   padding: 24px;
@@ -33,6 +33,10 @@ export const Form = styled.form`
     border: 2px solid ${props => props.theme.colors.primary};
     padding: 16px 48px;
     border-radius: 12px;
+
+    #closeButton {
+      display: none;
+    }
 
     .title {
       display: flex;
@@ -110,6 +114,59 @@ export const Form = styled.form`
 
         p {
           color: ${props => props.theme.colors.primary};
+        }
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    padding: 8px;
+    border-radius: 0px;
+
+    .wrapper {
+      padding: 0px 16px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+
+      #closeButton {
+        display: flex;
+        color: black;
+        position: absolute;
+        top: 32px;
+        right: 16px;
+        border: 1px solid black;
+        font-weight: 700;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+      }
+
+      .title {
+        margin-top: 0px;
+      }
+
+      div {
+        .error {
+          p {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .wrapper {
+      .title {
+        h1 {
+          font-size: 28px;
         }
       }
     }

@@ -9,6 +9,7 @@ import {
   Header,
   Main,
   Menu,
+  MenuMobile,
   History,
   Players,
 } from "../styles/pages/Home";
@@ -57,6 +58,29 @@ const Home: NextPage = () => {
               </button>
             </div>
           </Menu>
+          <MenuMobile>
+            <input type="checkbox" name="cbMenu" id="cbMenu" />
+            <label htmlFor="cbMenu">
+              <img src="assets/hamburger-menu.png" alt="Menu icon" />
+            </label>
+            <menu>
+              <header>
+                <h1>MENU</h1>
+              </header>
+              <hr />
+              <nav>
+                <img src="/assets/logo.png" />
+                <button type="button" onClick={showLoginForm}>
+                  Entrar
+                </button>
+                <button type="button" onClick={showRegisterForm}>
+                  Trabalhe Conosco
+                </button>
+                <a href="#history">História</a>
+                <a href="#players">Jogadores</a>
+              </nav>
+            </menu>
+          </MenuMobile>
         </Header>
         <Main>
           <h1>BEM-VINDO AO HOFFENS</h1>
