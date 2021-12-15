@@ -8,7 +8,7 @@ export const Background = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 3;
 `;
 
 export const Form = styled.form`
@@ -17,10 +17,10 @@ export const Form = styled.form`
   width: 700px;
   border-radius: 12px;
   position: fixed;
-  top: 16px;
+  top: 32px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: row;
   padding: 24px;
