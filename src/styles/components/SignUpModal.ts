@@ -1,55 +1,52 @@
 import styled from "styled-components";
 
-export const Background = styled.div`
-  background-color: #000000ba;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-`;
-
 export const Form = styled.form`
-  background-color: white;
-  height: 600px;
-  width: 700px;
-  border-radius: 12px;
-  position: fixed;
-  top: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
+  background-color: #080808;
+  height: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: row;
-  padding: 24px;
+  padding-top: 80px;
   justify-content: space-between;
   align-items: center;
 
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: calc(100vh - 80px);
+    background-color: #080808;
+
+    img {
+      width: 400px;
+      height: 400px;
+    }
+  }
+
   .wrapper {
-    height: 100%;
-    width: 100%;
-    border: 2px solid ${props => props.theme.colors.primary};
-    padding: 0px 48px;
-    border-radius: 12px;
+    height: calc(100vh - 80px);
+    width: 60%;
+    padding: 16px 48px;
+    background-color: ${props => props.theme.colors.background};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
     .title {
       display: flex;
       flex-direction: row;
       align-items: center;
+      justify-content: space-around;
       flex-wrap: nowrap;
 
       h1 {
-        color: ${props => props.theme.colors.primary};
+        color: ${props => props.theme.colors.text};
         text-align: center;
         font-weight: 900;
         font-size: 39px;
-      }
-
-      img {
-        width: 108px;
-        height: 108px;
+        margin-bottom: 64px;
       }
     }
 
@@ -64,7 +61,7 @@ export const Form = styled.form`
       input {
         width: 49%;
         height: 48px;
-        border: 1px solid #979797;
+        border: 1px solid ${props => props.theme.colors.text};
         border-radius: 4px;
         outline: none;
         color: ${props => props.theme.colors.primary};
@@ -82,8 +79,8 @@ export const Form = styled.form`
       }
 
       button {
-        background-color: ${props => props.theme.colors.primary};
-        color: ${props => props.theme.colors.text};
+        background-color: #080808;
+        color: #fff;
         font-size: 28px;
         font-weight: 700;
         border: none;
@@ -103,15 +100,59 @@ export const Form = styled.form`
         justify-content: center;
         padding: 4px;
         border-radius: 4px;
-        border: 1px solid ${props => props.theme.colors.primary};
+        border: 1px solid ${props => props.theme.colors.text};
 
         img {
+          position: inherit;
           width: 24px;
           margin-right: 16px;
         }
 
         p {
-          color: ${props => props.theme.colors.primary};
+          color: ${props => props.theme.colors.text};
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1050px) {
+    .logo {
+      img {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .logo {
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+
+  @media (max-width: 560px) {
+    .logo {
+      display: none;
+    }
+
+    .wrapper {
+      width: 100%;
+      height: 100%;
+
+      .title {
+        margin: 0;
+
+        h1 {
+          margin: 0px;
+        }
+      }
+
+      div {
+        input {
+          width: 100%;
         }
       }
     }

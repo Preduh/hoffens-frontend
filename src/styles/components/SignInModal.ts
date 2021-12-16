@@ -1,60 +1,38 @@
 import styled from "styled-components";
 
-export const Background = styled.div`
-  background-color: #000000ba;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-`;
-
 export const Form = styled.form`
-  background-color: white;
-  height: 550px;
-  width: 500px;
-  border-radius: 12px;
-  position: fixed;
-  top: 64px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
+  background-color: #080808;
+  height: 100%;
+  width: 100vw;
   display: flex;
-  flex-direction: column;
-  padding: 24px;
+  flex-direction: row;
+  padding-top: 80px;
   justify-content: space-between;
   align-items: center;
 
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: calc(100vh - 80px);
+    background-color: #080808;
+
+    img {
+      width: 400px;
+      height: 400px;
+    }
+  }
+
   .wrapper {
-    height: 100%;
-    width: 100%;
-    border: 2px solid ${props => props.theme.colors.primary};
+    height: calc(100vh - 80px);
+    width: 60%;
     padding: 16px 48px;
-    border-radius: 12px;
-
-    #closeButton {
-      display: none;
-    }
-
-    .title {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      h1 {
-        color: ${props => props.theme.colors.primary};
-        text-align: center;
-        font-weight: 900;
-        font-size: 39px;
-      }
-
-      img {
-        width: 108px;
-        height: 108px;
-      }
-    }
+    background-color: ${props => props.theme.colors.background};
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     div {
       display: flex;
@@ -62,6 +40,14 @@ export const Form = styled.form`
       justify-content: space-between;
       margin-top: 32px;
       width: 100%;
+
+      h1 {
+        color: ${props => props.theme.colors.text};
+        text-align: center;
+        font-weight: 900;
+        font-size: 39px;
+        margin-bottom: 64px;
+      }
 
       input {
         width: 100%;
@@ -84,7 +70,7 @@ export const Form = styled.form`
       }
 
       button {
-        background-color: ${props => props.theme.colors.primary};
+        background-color: #080808;
         color: ${props => props.theme.colors.text};
         font-size: 28px;
         font-weight: 700;
@@ -119,72 +105,32 @@ export const Form = styled.form`
     }
   }
 
+  @media (max-width: 1000px) {
+    .title {
+      img {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  }
+
   @media (max-width: 800px) {
-    width: 100%;
-    top: 0px;
-    padding: 8px;
-    border-radius: 0px;
-    height: 100%;
-
-    .wrapper {
-      padding: 0px 16px;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
-
-      #closeButton {
-        display: flex;
-        color: black;
-        position: absolute;
-        top: 32px;
-        right: 16px;
-        border: 1px solid black;
-        font-weight: 700;
-        width: 32px;
-        height: 32px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-      }
-
-      .title {
-        margin-top: 0px;
-      }
-
-      div {
-        .error {
-          p {
-            font-size: 22px;
-          }
-        }
+    .title {
+      img {
+        width: 200px;
+        height: 200px;
       }
     }
   }
 
-  @media (max-width: 600px) {
-    .wrapper {
-      .title {
-        h1 {
-          font-size: 28px;
-        }
-      }
+  @media (max-width: 560px) {
+    .title {
+      display: none;
     }
-  }
 
-  @media (max-height: 500px) {
     .wrapper {
-      .title {
-        display: none;
-      }
-    }
-  }
-
-  @media (max-height: 360px) {
-    .wrapper {
-      #closeButton {
-        top: 12px;
-      }
+      width: 100%;
+      height: 100%;
     }
   }
 `;
