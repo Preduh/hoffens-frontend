@@ -47,9 +47,7 @@ export function AuthProvider({ children }) {
 
     if (token) {
       api
-        .post("api/recoveryToken", {
-          recoveryToken: token,
-        })
+        .post("user/recovery", { token })
         .then(response => {
           setUser(response.data);
         })
@@ -59,7 +57,7 @@ export function AuthProvider({ children }) {
 
   const signIn = async ({ email, password }: SignInData) => {
     try {
-      const { data } = await api.post("api/session", { email, password });
+      const { data } = await api.post("/session", { email, password });
 
       if (data) {
         setCookie(undefined, "hoffens.token", data.token, {
@@ -86,7 +84,7 @@ export function AuthProvider({ children }) {
     avatarUrl,
   }: SignUpData) => {
     try {
-      const { data } = await api.post("api/player", {
+      const { data } = await api.post("user", {
         email,
         password,
         username,
