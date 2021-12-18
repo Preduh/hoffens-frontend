@@ -18,10 +18,10 @@ export const Header = styled.header`
       height: 64px;
       width: 64px;
     }
-  }
 
-  @media (max-width: 800px) {
-    padding: 0px 16px;
+    :hover {
+      filter: brightness(80%);
+    }
   }
 `;
 
@@ -36,11 +36,26 @@ export const Menu = styled.menu`
   div {
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     a {
       margin-left: 22px;
       text-decoration: none;
       color: ${props => props.theme.colors.text};
+
+      :hover {
+        filter: brightness(80%);
+      }
+    }
+
+    img {
+      width: 48px;
+      margin-left: 24px;
+      cursor: pointer;
+
+      :hover {
+        filter: brightness(80%);
+      }
     }
 
     button {

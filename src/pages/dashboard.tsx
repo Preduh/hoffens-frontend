@@ -3,26 +3,34 @@ import Head from "next/head";
 import { parseCookies } from "nookies";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { Container, Header } from "../styles/pages/Dashboard";
+import { Container, CharWrapper } from "../styles/pages/Dashboard";
+import Header from "../components/Header";
+import CharCard from "../components/CharCard";
 
 const Dashboard: NextPage = () => {
-  const { user } = useContext(AuthContext);
+  const { user, chars } = useContext(AuthContext);
   return (
     <Container>
       <Head>
         <title>Dashboard</title>
       </Head>
-      <Header>
-        <h1>Dashboard</h1>
-        <img
-          src={user?.avatarUrl}
-          onError={(e: any) => {
-            e.target.onerror = null;
-            e.target.src =
-              "https://cdn.discordapp.com/attachments/793823363725656077/917877725425975346/69pS2JKrBFAAAAABJRU5ErkJggg.png";
-          }}
-        />
-      </Header>
+      <Header />
+      <CharWrapper>
+        <a href="/" id="addCharBtn">
+          <img src="assets/adicionar-icone.png" />
+        </a>
+        {chars?.map(({ id, hero, identity, power_level }) => {
+          hero = hero.split(" ")[0];
+          return (
+            <CharCard
+              key={id}
+              hero={hero}
+              identity={identity}
+              power_level={power_level}
+            />
+          );
+        })}
+      </CharWrapper>
     </Container>
   );
 };

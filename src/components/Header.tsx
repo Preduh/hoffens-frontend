@@ -1,6 +1,11 @@
+import { useContext } from "react";
+
 import { Header, Menu, MenuMobile } from "../styles/components/header";
+import { AuthContext } from "../contexts/AuthContext";
 
 const HeaderNav = () => {
+  const { isAuthenticated } = useContext(AuthContext);
+
   return (
     <Header>
       <a href="/">
@@ -11,10 +16,17 @@ const HeaderNav = () => {
           <a href="/history">História</a>
           <a href="/players">Jogadores</a>
         </div>
-        <div>
-          <a href="/login">Entrar</a>
-          <a href="/register">Trabalhe conosco</a>
-        </div>
+        {isAuthenticated ? (
+          <div>
+            <a href="/dashboard">Dashboard</a>
+            <img src="./assets/user.png"></img>
+          </div>
+        ) : (
+          <div>
+            <a href="/login">Entrar</a>
+            <a href="/register">Trabalhe conosco</a>
+          </div>
+        )}
       </Menu>
       <MenuMobile>
         <input type="checkbox" name="cbMenu" id="cbMenu" />

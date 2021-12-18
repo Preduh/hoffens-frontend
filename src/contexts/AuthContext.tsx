@@ -25,9 +25,29 @@ interface UserData {
   _id: string;
 }
 
+interface CharData {
+  id: string;
+  hero: string;
+  user_id: string;
+  identity: string;
+  secret_identity: boolean;
+  gender: string;
+  age: number;
+  height: number;
+  weight: number;
+  eyes: string;
+  hair: string;
+  affiliate_group: string;
+  base_of_operations: string;
+  power_level: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 interface AuthContextData {
   isAuthenticated: boolean;
   user: UserData;
+  chars: CharData[];
   signIn: (data: SignInData) => Promise<void>;
   signUp: (data: SignUpData) => Promise<void>;
   errorSignIn: {};
@@ -38,6 +58,7 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState<UserData | null>(null);
+  const [chars, setChars] = useState<CharData[] | null>(null);
   const isAuthenticated = !!user;
   const [errorSignIn, setErrorSignIn] = useState<{} | null>(null);
   const [errorSignUp, setErrorSignUp] = useState<{} | null>(null);
@@ -52,6 +73,11 @@ export function AuthProvider({ children }) {
           setUser(response.data);
         })
         .catch(err => console.log(err));
+
+      api
+        .get("characters")
+        .then(response => setChars(response.data))
+        .catch(err => console.log(err));
     }
   }, []);
 
@@ -63,8 +89,6 @@ export function AuthProvider({ children }) {
         setCookie(undefined, "hoffens.token", data.token, {
           maxAge: 60 * 60 * 24, // 24 hours
         });
-
-        setUser(data);
 
         api.defaults.headers["authorization"] = `Bearer ${data.token}`;
 
@@ -113,6 +137,7 @@ export function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{
         user,
+        chars,
         signIn,
         signUp,
         isAuthenticated,
