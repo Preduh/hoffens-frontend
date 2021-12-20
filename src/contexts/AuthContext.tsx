@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { parseCookies, setCookie } from "nookies";
+import { destroyCookie, parseCookies, setCookie } from "nookies";
 import Router from "next/router";
 
 import { api } from "../utils/api";
@@ -50,6 +50,7 @@ interface AuthContextData {
   chars: CharData[];
   signIn: (data: SignInData) => Promise<void>;
   signUp: (data: SignUpData) => Promise<void>;
+  logout: () => void;
   errorSignIn: {};
   errorSignUp: {};
 }
@@ -93,7 +94,7 @@ export function AuthProvider({ children }) {
         api.defaults.headers["authorization"] = `Bearer ${data.token}`;
 
         setErrorSignIn(null);
-        Router.push("/dashboard");
+        Router.push("/player/dashboard");
       }
     } catch (err) {
       setErrorSignIn(err.response.data.error);
@@ -126,11 +127,16 @@ export function AuthProvider({ children }) {
         api.defaults.headers["authorization"] = `Bearer ${data.token}`;
 
         setErrorSignUp(null);
-        Router.push("/dashboard");
+        Router.push("/player/dashboard");
       }
     } catch (err) {
       setErrorSignUp(err.response.data.error);
     }
+  };
+
+  const logout = () => {
+    destroyCookie(null, "hoffens.token");
+    Router.push("/");
   };
 
   return (
@@ -140,6 +146,7 @@ export function AuthProvider({ children }) {
         chars,
         signIn,
         signUp,
+        logout,
         isAuthenticated,
         errorSignIn,
         errorSignUp,

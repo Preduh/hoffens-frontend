@@ -11,6 +11,7 @@ export const CharWrapper = styled.div`
   padding: 80px 64px 32px 44px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   #addCharBtn {
     background-color: #3e3e3e70;

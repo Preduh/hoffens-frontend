@@ -10,10 +10,7 @@ export default createGlobalStyle`
  html, body {
    height: 100%;
    width: 100vw;
- }
-
- html {
-   scroll-behavior: smooth;
+   overflow-x: hidden;
  }
 
  body {

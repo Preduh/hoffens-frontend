@@ -4,12 +4,12 @@ import { Header, Menu, MenuMobile } from "../styles/components/header";
 import { AuthContext } from "../contexts/AuthContext";
 
 const HeaderNav = () => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, logout } = useContext(AuthContext);
 
   return (
     <Header>
       <a href="/">
-        <img src="./assets/logo.png" alt="Hoffens logo" />
+        <img src="../assets/logo.png" alt="Hoffens logo" />
       </a>
       <Menu>
         <div>
@@ -18,8 +18,10 @@ const HeaderNav = () => {
         </div>
         {isAuthenticated ? (
           <div>
-            <a href="/dashboard">Dashboard</a>
-            <img src="./assets/user.png"></img>
+            <a href="/player/dashboard">Dashboard</a>
+            <button type="button" onClick={logout} id="userIconBtn">
+              <img src="../assets/user.png"></img>
+            </button>
           </div>
         ) : (
           <div>
@@ -31,7 +33,7 @@ const HeaderNav = () => {
       <MenuMobile>
         <input type="checkbox" name="cbMenu" id="cbMenu" />
         <label htmlFor="cbMenu">
-          <img src="assets/hamburger-menu.png" alt="Menu icon" />
+          <img src="../assets/hamburger-menu.png" alt="Menu icon" />
         </label>
         <menu>
           <header>

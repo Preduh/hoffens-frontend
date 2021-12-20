@@ -2,10 +2,10 @@ import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { parseCookies } from "nookies";
 import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext";
-import { Container, CharWrapper } from "../styles/pages/Dashboard";
-import Header from "../components/Header";
-import CharCard from "../components/CharCard";
+import { AuthContext } from "../../contexts/AuthContext";
+import { Container, CharWrapper } from "../../styles/pages/Dashboard";
+import Header from "../../components/Header";
+import CharCard from "../../components/CharCard";
 
 const Dashboard: NextPage = () => {
   const { user, chars } = useContext(AuthContext);
@@ -16,8 +16,8 @@ const Dashboard: NextPage = () => {
       </Head>
       <Header />
       <CharWrapper>
-        <a href="/" id="addCharBtn">
-          <img src="assets/adicionar-icone.png" />
+        <a href="/player/createChar" id="addCharBtn">
+          <img src="../assets/adicionar-icone.png" />
         </a>
         {chars?.map(({ id, hero, identity, power_level }) => {
           hero = hero.split(" ")[0];

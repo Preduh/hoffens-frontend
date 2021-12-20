@@ -10,6 +10,7 @@ export const Header = styled.header`
   width: 100%;
   height: 80px;
   z-index: 2;
+  top: 0;
 
   a {
     z-index: 1;
@@ -48,13 +49,17 @@ export const Menu = styled.menu`
       }
     }
 
-    img {
-      width: 48px;
-      margin-left: 24px;
-      cursor: pointer;
+    #userIconBtn {
+      margin: 0;
 
-      :hover {
-        filter: brightness(80%);
+      img {
+        width: 48px;
+        margin-left: 24px;
+        cursor: pointer;
+
+        :hover {
+          filter: brightness(80%);
+        }
       }
     }
 
