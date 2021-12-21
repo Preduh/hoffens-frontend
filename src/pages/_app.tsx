@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 import GlobalStyle from "../styles/global";
 import { AuthProvider } from "../contexts/AuthContext";
+import Header from "../components/Header";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -28,6 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             content="RPG Hoffens jogado no Vongola."
           ></meta>
         </Head>
+        <Header />
         <Component {...pageProps} />
         <GlobalStyle />
       </ThemeProvider>

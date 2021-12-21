@@ -1,12 +1,14 @@
 import { NextPage } from "next";
-import Header from "../components/Header";
+import Head from "next/head";
 
 import { History } from "../styles/pages/History";
 
 const Home: NextPage = () => {
   return (
     <>
-      <Header />
+      <Head>
+        <title>História</title>
+      </Head>
       <History id="history">
         <img src="./assets/logo.png" alt="Hoffens Logo" />
         <p>

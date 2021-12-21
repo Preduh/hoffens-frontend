@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import Head from "next/head";
+
 import { AuthContext } from "../contexts/AuthContext";
 import { Form } from "../styles/components/SignUpModal";
-import Header from "../components/Header";
 
 interface SignUpData {
   username: string;
@@ -29,7 +30,9 @@ const Register: NextPage = () => {
 
   return (
     <>
-      <Header />
+      <Head>
+        <title>Trabalhe conosco</title>
+      </Head>
       <Form onSubmit={handleSubmit(handleSignUp)}>
         <div className="logo">
           <img src="/assets/logo.png" alt="Logo Hoffens" />

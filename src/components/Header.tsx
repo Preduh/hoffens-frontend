@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Link from "next/link";
 
 import { Header, Menu, MenuMobile } from "../styles/components/header";
 import { AuthContext } from "../contexts/AuthContext";
@@ -8,25 +9,36 @@ const HeaderNav = () => {
 
   return (
     <Header>
-      <a href="/">
-        <img src="../assets/logo.png" alt="Hoffens logo" />
-      </a>
+      <Link href="/">
+        <img id="hoffens_logo" src="../assets/logo.png" alt="Hoffens logo" />
+      </Link>
       <Menu>
         <div>
-          <a href="/history">História</a>
-          <a href="/players">Jogadores</a>
+          <Link href="/history">
+            <a>História</a>
+          </Link>
+          <Link href="/players">
+            <a>Jogadores</a>
+          </Link>
         </div>
         {isAuthenticated ? (
           <div>
-            <a href="/player/dashboard">Dashboard</a>
+            <Link href="/dashboard">
+              <a>Dashboard</a>
+            </Link>
+
             <button type="button" onClick={logout} id="userIconBtn">
-              <img src="../assets/user.png"></img>
+              <img src="../assets/user.png" />
             </button>
           </div>
         ) : (
           <div>
-            <a href="/login">Entrar</a>
-            <a href="/register">Trabalhe conosco</a>
+            <Link href="/login">
+              <a>Entrar</a>
+            </Link>
+            <Link href="/register">
+              <a>Trabalhe conosco</a>
+            </Link>
           </div>
         )}
       </Menu>

@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import Head from "next/head";
+
 import { AuthContext } from "../contexts/AuthContext";
-import Header from "../components/Header";
 import { Form } from "../styles/components/SignInModal";
 
 interface SignInData {
@@ -23,7 +24,9 @@ const Login: NextPage = () => {
 
   return (
     <>
-      <Header />
+      <Head>
+        <title>Entrar</title>
+      </Head>
       <Form onSubmit={handleSubmit(handleSignIn)}>
         <div className="title">
           <img src="/assets/logo.png" alt="Logo Hoffens" />

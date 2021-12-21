@@ -12,13 +12,14 @@ export const Header = styled.header`
   z-index: 2;
   top: 0;
 
-  a {
-    z-index: 1;
+  z-index: 1;
 
-    img {
-      height: 64px;
-      width: 64px;
-    }
+  #hoffens_logo {
+    z-index: 1;
+    cursor: pointer;
+
+    height: 64px;
+    width: 64px;
 
     :hover {
       filter: brightness(80%);

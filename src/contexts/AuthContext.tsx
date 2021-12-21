@@ -22,7 +22,7 @@ interface UserData {
   token: string;
   username: string;
   avatarUrl: string;
-  _id: string;
+  id: string;
 }
 
 interface CharData {
@@ -44,12 +44,28 @@ interface CharData {
   updated_at: Date;
 }
 
+interface CreateCharData {
+  hero: string;
+  identity: string;
+  secret_identity: boolean;
+  gender: string;
+  age: number;
+  height: number;
+  weight: number;
+  eyes: string;
+  hair: string;
+  affiliate_group: string;
+  base_of_operations: string;
+  power_level: string;
+}
+
 interface AuthContextData {
   isAuthenticated: boolean;
   user: UserData;
   chars: CharData[];
   signIn: (data: SignInData) => Promise<void>;
   signUp: (data: SignUpData) => Promise<void>;
+  createChar: (data: CreateCharData) => Promise<void>;
   logout: () => void;
   errorSignIn: {};
   errorSignUp: {};
@@ -73,7 +89,13 @@ export function AuthProvider({ children }) {
         .then(response => {
           setUser(response.data);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          if (err.response.data == "Invalid JWT.") {
+            destroyCookie(null, "hoffens.token");
+            Router.push("/login");
+          }
+          console.log(err);
+        });
 
       api
         .get("characters")
@@ -81,6 +103,44 @@ export function AuthProvider({ children }) {
         .catch(err => console.log(err));
     }
   }, []);
+
+  const createChar = async ({
+    hero,
+    identity,
+    secret_identity,
+    gender,
+    age,
+    height,
+    weight,
+    eyes,
+    hair,
+    affiliate_group,
+    base_of_operations,
+    power_level,
+  }: CreateCharData) => {
+    try {
+      const { data } = await api.post("character", {
+        hero,
+        user_id: user.id,
+        identity,
+        secret_identity,
+        gender,
+        age,
+        height,
+        weight,
+        eyes,
+        hair,
+        affiliate_group,
+        base_of_operations,
+        power_level,
+      });
+
+      setChars([...chars, data]);
+      Router.push("/dashboard");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const signIn = async ({ email, password }: SignInData) => {
     try {
@@ -93,8 +153,9 @@ export function AuthProvider({ children }) {
 
         api.defaults.headers["authorization"] = `Bearer ${data.token}`;
 
+        setUser(data.user);
         setErrorSignIn(null);
-        Router.push("/player/dashboard");
+        Router.push("/dashboard");
       }
     } catch (err) {
       setErrorSignIn(err.response.data.error);
@@ -127,7 +188,7 @@ export function AuthProvider({ children }) {
         api.defaults.headers["authorization"] = `Bearer ${data.token}`;
 
         setErrorSignUp(null);
-        Router.push("/player/dashboard");
+        Router.push("/dashboard");
       }
     } catch (err) {
       setErrorSignUp(err.response.data.error);
@@ -136,6 +197,7 @@ export function AuthProvider({ children }) {
 
   const logout = () => {
     destroyCookie(null, "hoffens.token");
+    setUser(null);
     Router.push("/");
   };
 
@@ -146,6 +208,7 @@ export function AuthProvider({ children }) {
         chars,
         signIn,
         signUp,
+        createChar,
         logout,
         isAuthenticated,
         errorSignIn,

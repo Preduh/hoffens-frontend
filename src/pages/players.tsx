@@ -1,12 +1,14 @@
 import { NextPage } from "next";
+import Head from "next/head";
 
-import Header from "../components/Header";
 import { Players } from "../styles/pages/Players";
 
 const PlayersPage: NextPage = () => {
   return (
     <>
-      <Header />
+      <Head>
+        <title>Jogadores</title>
+      </Head>
       <Players id="players">
         <div className="player">
           <div className="avatar" />
