@@ -28,6 +28,7 @@ const Dashboard: NextPage = () => {
             return (
               <CharCard
                 key={id}
+                charId={id}
                 hero={hero}
                 identity={identity}
                 power_level={power_level}

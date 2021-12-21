@@ -63,8 +63,10 @@ interface AuthContextData {
   isAuthenticated: boolean;
   user: UserData;
   chars: CharData[];
+  char: CharData;
   signIn: (data: SignInData) => Promise<void>;
   signUp: (data: SignUpData) => Promise<void>;
+  getChar: (charId: string) => Promise<void>;
   createChar: (data: CreateCharData) => Promise<void>;
   logout: () => void;
   errorSignIn: {};
@@ -75,6 +77,7 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState<UserData | null>(null);
+  const [char, setChar] = useState<CharData | null>(null);
   const [chars, setChars] = useState<CharData[] | null>(null);
   const isAuthenticated = !!user;
   const [errorSignIn, setErrorSignIn] = useState<{} | null>(null);
@@ -103,6 +106,13 @@ export function AuthProvider({ children }) {
         .catch(err => console.log(err));
     }
   }, []);
+
+  const getChar = async (charId: string): Promise<void> => {
+    const { data } = await api.get(`character/${charId}`);
+
+    setChar(data);
+    Router.push("/character");
+  };
 
   const createChar = async ({
     hero,
@@ -198,6 +208,7 @@ export function AuthProvider({ children }) {
   const logout = () => {
     destroyCookie(null, "hoffens.token");
     setUser(null);
+    setChar(null);
     Router.push("/");
   };
 
@@ -206,8 +217,10 @@ export function AuthProvider({ children }) {
       value={{
         user,
         chars,
+        char,
         signIn,
         signUp,
+        getChar,
         createChar,
         logout,
         isAuthenticated,

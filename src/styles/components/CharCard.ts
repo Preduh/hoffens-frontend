@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.button`
   background-color: #3e3e3e70;
   width: 280px;
   height: 350px;
@@ -12,4 +12,9 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
 `;
