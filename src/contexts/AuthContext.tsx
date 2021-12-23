@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { destroyCookie, parseCookies, setCookie } from "nookies";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 
 import { api } from "../utils/api";
 
@@ -82,6 +82,8 @@ export function AuthProvider({ children }) {
   const isAuthenticated = !!user;
   const [errorSignIn, setErrorSignIn] = useState<{} | null>(null);
   const [errorSignUp, setErrorSignUp] = useState<{} | null>(null);
+  const router = useRouter();
+  const { charIdParam } = router.query;
 
   useEffect(() => {
     const { "hoffens.token": token } = parseCookies();
@@ -104,14 +106,20 @@ export function AuthProvider({ children }) {
         .get("characters")
         .then(response => setChars(response.data))
         .catch(err => console.log(err));
+
+      getChar(null);
     }
   }, []);
 
-  const getChar = async (charId: string): Promise<void> => {
-    const { data } = await api.get(`character/${charId}`);
-
-    setChar(data);
-    Router.push("/character");
+  const getChar = async (charId: string | null): Promise<void> => {
+    if (!charId) {
+      const { data } = await api.get(`character/${charIdParam}`);
+      setChar(data);
+    } else {
+      const { data } = await api.get(`character/${charId}`);
+      setChar(data);
+      Router.push(`character/${charId}`);
+    }
   };
 
   const createChar = async ({
@@ -145,7 +153,12 @@ export function AuthProvider({ children }) {
         power_level,
       });
 
-      setChars([...chars, data]);
+      if (chars) {
+        setChars([...chars, data]);
+      } else {
+        setChars([data]);
+      }
+
       Router.push("/dashboard");
     } catch (err) {
       console.log(err);
@@ -164,6 +177,7 @@ export function AuthProvider({ children }) {
         api.defaults.headers["authorization"] = `Bearer ${data.token}`;
 
         setUser(data.user);
+        setChars(data.characters);
         setErrorSignIn(null);
         Router.push("/dashboard");
       }
@@ -193,7 +207,7 @@ export function AuthProvider({ children }) {
           maxAge: 60 * 60 * 24, // 24 hours
         });
 
-        setUser(data);
+        setUser(data.user);
 
         api.defaults.headers["authorization"] = `Bearer ${data.token}`;
 
