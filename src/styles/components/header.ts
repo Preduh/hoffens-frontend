@@ -94,6 +94,7 @@ export const MenuMobile = styled.div`
 
   label {
     z-index: 1;
+    cursor: pointer;
   }
 
   menu {
@@ -151,6 +152,20 @@ export const MenuMobile = styled.div`
         font-weight: 600;
         color: #fff;
         z-index: 1;
+
+        label {
+          width: 100%;
+          text-align: start;
+          margin-left: 23%;
+        }
+
+        .menuIcons {
+          width: 24px;
+          height: 24px;
+          opacity: 100%;
+          position: initial;
+          margin-right: 48px;
+        }
       }
 
       button {
@@ -160,7 +175,31 @@ export const MenuMobile = styled.div`
       }
 
       a {
+        padding: 0px 64px;
         text-decoration: none;
+      }
+
+      .menuWhenAuthenticated {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        justify-content: space-evenly;
+
+        button,
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #202020;
+          border: none;
+          width: 100%;
+          height: 48px;
+          font-size: 24px;
+          font-weight: 600;
+          color: #fff;
+        }
       }
     }
   }

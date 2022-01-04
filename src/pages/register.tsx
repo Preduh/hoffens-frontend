@@ -11,7 +11,6 @@ interface SignUpData {
   email: string;
   password: string;
   masterKey: string;
-  avatarUrl: string;
 }
 
 const Register: NextPage = () => {
@@ -23,9 +22,8 @@ const Register: NextPage = () => {
     email,
     password,
     masterKey,
-    avatarUrl,
   }: SignUpData) => {
-    signUp({ username, email, password, masterKey, avatarUrl });
+    signUp({ username, email, password, masterKey });
   };
 
   return (
@@ -64,12 +62,6 @@ const Register: NextPage = () => {
               {...register("masterKey")}
               type="password"
               placeholder="Master key"
-            />
-            <input
-              {...register("avatarUrl")}
-              type="text"
-              placeholder="Avatar URL - Opcional"
-              style={{ width: "100%" }}
             />
             <button type="submit">CADASTRAR</button>
             {errorSignUp && (

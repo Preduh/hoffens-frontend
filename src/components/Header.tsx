@@ -26,7 +26,6 @@ const HeaderNav = () => {
             <Link href="/dashboard">
               <a>Dashboard</a>
             </Link>
-
             <button type="button" onClick={logout} id="userIconBtn">
               <img src="../assets/user.png" />
             </button>
@@ -54,10 +53,47 @@ const HeaderNav = () => {
           <hr />
           <nav>
             <img src="/assets/logo.png" />
-            <a href="/login">Entrar</a>
-            <a href="/register">Trabalhe conosco</a>
-            <a href="/history">História</a>
-            <a href="/players">Jogadores</a>
+            {isAuthenticated ? (
+              <div className="menuWhenAuthenticated">
+                <a href="/dashboard">
+                  <img src="./assets/dashboard.png" className="menuIcons" />
+                  <label>Dashboard</label>
+                </a>
+                <a href="/history">
+                  <img src="./assets/historyIcon.png" className="menuIcons" />
+                  <label>História</label>
+                </a>
+                <a href="/players">
+                  <img src="./assets/playersIcon.png" className="menuIcons" />
+                  <label>Jogadores</label>
+                </a>
+                <button type="button" onClick={logout} id="userIconBtn">
+                  <a href="/">
+                    <img src="./assets/logout.png" className="menuIcons" />
+                    <label>Logout</label>
+                  </a>
+                </button>
+              </div>
+            ) : (
+              <>
+                <a href="/login">
+                  <img src="./assets/padlock.png" className="menuIcons" />
+                  <label>Entrar</label>
+                </a>
+                <a href="/register">
+                  <img src="./assets/cv.png" className="menuIcons" />
+                  <label>Trabalhe Conosco</label>
+                </a>
+                <a href="/history">
+                  <img src="./assets/historyIcon.png" className="menuIcons" />
+                  <label>História</label>
+                </a>
+                <a href="/players">
+                  <img src="./assets/playersIcon.png" className="menuIcons" />
+                  <label>Jogadores</label>
+                </a>
+              </>
+            )}
           </nav>
         </menu>
       </MenuMobile>

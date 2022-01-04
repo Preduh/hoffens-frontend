@@ -78,6 +78,26 @@ export const Form = styled.form`
         }
       }
 
+      label {
+        background-color: #080808;
+        width: 100%;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        border: 2px dashed #979797;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #000;
+        }
+      }
+
+      #uploadImage {
+        display: none;
+      }
+
       button {
         background-color: #080808;
         color: #fff;

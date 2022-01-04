@@ -21,7 +21,6 @@ export const History = styled.div`
   }
 
   p {
-    z-index: 1;
     color: ${props => props.theme.colors.text};
     width: 800px;
     font-size: 26px;

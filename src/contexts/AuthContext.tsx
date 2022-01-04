@@ -14,7 +14,7 @@ interface SignUpData {
   email: string;
   password: string;
   masterKey: string;
-  avatarUrl: string;
+  image?: any;
 }
 
 interface UserData {
@@ -107,11 +107,12 @@ export function AuthProvider({ children }) {
         .then(response => setChars(response.data))
         .catch(err => console.log(err));
 
-      getChar(null);
+      if (charIdParam) getChar(null);
     }
   }, []);
 
   const getChar = async (charId: string | null): Promise<void> => {
+    console.log(charId);
     if (!charId) {
       const { data } = await api.get(`character/${charIdParam}`);
       setChar(data);
@@ -191,15 +192,20 @@ export function AuthProvider({ children }) {
     password,
     username,
     masterKey,
-    avatarUrl,
+    image,
   }: SignUpData) => {
     try {
-      const { data } = await api.post("user", {
-        email,
-        password,
-        username,
-        masterKey,
-        avatarUrl,
+      const formData = new FormData();
+      formData.append("file", image.file, image.file.name);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("username", username);
+      formData.append("masterKey", masterKey);
+
+      const { data } = await api.post("user", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
 
       if (data) {
